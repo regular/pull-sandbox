@@ -1,7 +1,7 @@
 {
   "name": "pull-sandbox",
   "version": "1.0.0",
-  "description": "pull-sandbox ---",
+  "description": "A through stream that runs a user-provided, untrusted mapper function in a quickjs sandbox in a worker thread.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
