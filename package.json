@@ -1,18 +1,27 @@
 {
   "name": "pull-sandbox",
   "version": "1.0.0",
-  "description": "",
+  "description": "pull-sandbox ---",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jan Bölsche <jan@lagomorph.de> (https://regular.codes/)",
+  "license": "MIT",
+  "dependencies": {
+    "pull-stream": "^3.6.14"
+  },
+  "devDependencies": {
+    "tape": "^5.0.0"
+  },
+  "directories": {
+    "test": "test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/regular/pull-sandbox.git"
   },
-  "keywords": [],
-  "author": "Jan Bölsche <jan@lagomorph.de> (https://regular.codes/)",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/regular/pull-sandbox/issues"
   },
