@@ -1,5 +1,6 @@
 const sandbox = require('sandbox-worker')
 const pull = require('pull-stream')
+const debug = require('debug')('pull-sandbox')
 
 module.exports = function(code, opts) {
   opts = opts || {}
@@ -13,13 +14,14 @@ module.exports = function(code, opts) {
   }
 
   return pull(
-    pull.through(null, abort => {
-      if (!_err) { 
-        _eff = abort
-        task.remove(()=>{
-          end(err=>{})
-        })
-      }
+    pull.through(x=>{
+      debug(`through: ${x}`)
+    }, abort => {
+      debug(`abort: ${abort ? abort.message : abort}`)
+      if (!_err) _eff = abort
+      task.remove(()=>{
+        end(err=>{})
+      })
     }),
     pull.asyncMap(function(x, cb) {
       const json = JSON.stringify(x)

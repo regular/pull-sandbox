@@ -25,4 +25,12 @@ test('pull some numbers through the sandbox', t=>{
 })
 ````
 
+## API
+
+### `sandbox(code)`
+  
+  - code: source code of a commonJS module that exports a map function.
+
+See [sandbox-worker](https://github.com/regular/sandbox-worker) for details.
+
 License: MIT

@@ -4,13 +4,15 @@
   "description": "A through stream that runs a user-provided, untrusted mapper function in a quickjs sandbox in a worker thread.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape test/**"
   },
-  "keywords": [],
+  "keywords": ["pull-stream", "sandbox", "worker", "isolation"],
   "author": "Jan Bölsche <jan@lagomorph.de> (https://regular.codes/)",
   "license": "MIT",
   "dependencies": {
-    "pull-stream": "^3.6.14"
+    "debug": "^4.1.1",
+    "pull-stream": "^3.6.14",
+    "sandbox-worker": "^1.0.0"
   },
   "devDependencies": {
     "tape": "^5.0.0"
