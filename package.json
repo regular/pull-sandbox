@@ -1,6 +1,6 @@
 {
   "name": "pull-sandbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A through stream that runs a user-provided, untrusted mapper function in a quickjs sandbox in a worker thread.",
   "main": "index.js",
   "scripts": {
