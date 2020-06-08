@@ -14,13 +14,11 @@ module.exports = function(code, opts) {
   }
 
   return pull(
-    pull.through(x=>{
-      debug(`through: ${x}`)
-    }, abort => {
+    asyncOnEnd( (abort, cb) => {
       debug(`abort: ${abort ? abort.message : abort}`)
       if (!_err) _eff = abort
       task.remove(()=>{
-        end(err=>{})
+        end(cb)
       })
     }),
     pull.asyncMap(function(x, cb) {
@@ -34,4 +32,28 @@ module.exports = function(code, opts) {
       })
     })
   )
+}
+
+// -- util
+
+function asyncOnEnd(onEnd) {
+  var a = false
+
+  function once (abort, cb) {
+    if(a || !onEnd) return cb(null)
+    a = true
+    onEnd(abort === true ? null : abort, cb)
+  }
+
+  return function (read) {
+    return function (end, cb) {
+      if (!end) return read(end, cbRead)
+      once(end, ()=>read(end, cbRead))
+      
+      function cbRead(end, data) {
+        if (!end) return cb(end, data)
+        once(end, ()=>cb(end, data))
+      }
+    }
+  }
 }
